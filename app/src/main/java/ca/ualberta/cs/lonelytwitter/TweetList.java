@@ -24,6 +24,22 @@ public class TweetList {
         return tweets.get(index);
     }
 
+    /*
+        Add a non duplicate.
+        If duplicate thrown an exception.
+        If no duplicate, add and return true.
+     */
+    public boolean addTweet(Tweet tweet) {
+        if (tweets.contains(tweet)) {
+            throw new IllegalArgumentException();
+        } else {
+            this.add(tweet);
+        }
 
+        return true;
+    }
 
+    public int getCount() {
+        return(tweets.size());
+    }
 }

@@ -19,15 +19,6 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
         assertTrue(tweets.hasTweet(tweet));
     }
 
-    public void testHasTweet(){
-        TweetList tweets = new TweetList();
-        Tweet tweet = new NormalTweet("Another Test Tweet");
-
-        assertFalse(tweets.hasTweet(tweet));
-        tweets.add(tweet);
-        assertTrue(tweets.hasTweet(tweet));
-    }
-
     public void testGetTweet(){
         TweetList tweets = new TweetList();
         Tweet tweet = new NormalTweet("Another Test Tweet");
@@ -41,7 +32,7 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
 
     public void testDeleteTweet(){
         TweetList tweets = new TweetList();
-        Tweet tweet = new NormalTweet("Another Test Tweet");
+        Tweet tweet = new NormalTweet("Last Tweet");
 
         tweets.add(tweet);
         tweets.delete(tweet);
@@ -49,5 +40,30 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
         assertFalse(tweets.hasTweet(tweet));
     }
 
+    public void testStrings() {
+        assertEquals("'test should be 'test'", "test", "test");
+        //assertTrue("'test' should start w/ 't'", "test", "test".startsWith("T"));
+    }
 
+    public void testDuplicates() {
+        TweetList tweets = new TweetList();
+        Tweet tweet = new NormalTweet("Last Tweet");
+
+        /* Uncomment to test for duplicate by adding a tweet into the list */
+        //tweets.addTweet(tweet);
+
+        assertTrue(tweets.addTweet(tweet));
+    }
+
+    public void testCount() {
+        TweetList tweets = new TweetList();
+        Tweet tweet = new NormalTweet("First Tweet");
+        Tweet tweet2 = new NormalTweet("Last Tweet");
+        int count = 2;
+
+        tweets.addTweet(tweet);
+        tweets.addTweet(tweet2);
+
+        assertEquals(tweets.getCount(), count);
+    }
 }
